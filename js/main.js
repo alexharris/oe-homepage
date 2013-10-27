@@ -17,18 +17,23 @@ function searchComplete() {
       // For each result write it's title and image to the screen
       var result = results[i];
       var imgContainer = document.createElement('div');
-
+      
+      if(i == 0){
+        imgContainer.className = 'item active';
+      } else {
+        imgContainer.className = 'item';
+      }
+      
       var newImg = document.createElement('img');
       newImg.className = 'image';
 
       // There is also a result.url property which has the escaped version
-      newImg.src=result.tbUrl;
+      newImg.src=result.unescapedUrl;
       imgContainer.appendChild(newImg);
 
       // Put our title + image in the content
       contentDiv.appendChild(imgContainer);
     }
-
   }
 }
 
@@ -41,11 +46,14 @@ function OnLoad(currentVal) {
   // complete.  The imageSearch object will have results in it.
   imageSearch.setSearchCompleteCallback(this, searchComplete, null);
 
+  imageSearch.setResultSetSize(8);
+
   // Find me a beautiful car.
   imageSearch.execute(currentVal);
   
   // Include the required Google branding
   // google.search.Search.getBranding('branding');
+
 }
 
 function formChange() {
@@ -54,6 +62,8 @@ function formChange() {
     OnLoad(currentVal);
 
   });
+
+  
 }
 
 google.setOnLoadCallback(formChange);

@@ -4,11 +4,12 @@
    Author's custom styles
    ========================================================================== */
 
-
+#carousel-example-generic {
+	width: 300px;
+}
 
 .image {
-	float: left;
-	padding-right: 10px;
+	width: 300px;
 }
 
 
