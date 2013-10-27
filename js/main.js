@@ -6,7 +6,6 @@ function searchComplete() {
 
   // Check that we got results
   if (imageSearch.results && imageSearch.results.length > 0) {
-    console.log(imageSearch.results.length);
     // Grab our content div, clear it.
     var contentDiv = document.getElementById('content');
     contentDiv.innerHTML = '';
@@ -60,7 +59,7 @@ function formChange() {
   $('#optionsForm').change(function(){
     currentVal = $( "input:radio[name=optionsRadios]:checked" ).val()
     OnLoad(currentVal);
-
+    $('.carousel').carousel();
   });
 
   
